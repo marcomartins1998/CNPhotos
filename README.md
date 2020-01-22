@@ -2,7 +2,7 @@
 ## OBJETIVO
 Realizar o desenvolvimento de um sistema de armazenamento e analítica de imagens com base na estrutura seguinte:
 
-![](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/TrabEstrutura.PNG | width=100) 
+![ScreenShot](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/TrabEstrutura.PNG)
 
 O sistema foi separado em três módulos principais:
 * Módulo cliente
@@ -15,17 +15,17 @@ O módulo cliente engloba todas as componentes que têm interação direta com o
 ### __Módulo cliente:__
 O módulo cliente apresenta uma interface de linha de comando onde o utilizador pode escolher entre o envio de uma imagem para análise, pesquisa de imagens existentes por categorias ou realização de pedidos ao monitor para obtenção do seu estado geral, também é possível o envio de comandos para definir o intervalo de adição/diminuição de instâncias de workers. O projeto Java referente a este módulo denomina-se CNPhotos.
  
-![](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosClient.PNG | width=100) 
+![ScreenShot](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosClient.png) 
 
 ### __Módulo worker:__ 
 O módulo worker encontra-se encarregue de receber notificações de novas imagens através da subscription “cn-d1-g1-images-subscription”, redirecionamento das respetivas imagens do bucket “cn-d1-g1-image-bucket” para a Vision API de forma a descobrir em que categorias se enquadram e proceder à contagem de faces, neste caso a imagem presente no bucket é atualizada com um quadrado verde à volta das caras existentes. As categorias são armazenadas num documento Firestore cujo id é o nome único da imagem. Adicionalmente, também são enviados dados do estado atual do worker para tópicos de métricas, nomeadamente quantas imagens são processadas por cada 10 segundos e a percentagem de utilização do CPU e da memória RAM. O projeto Java referente a este módulo é denominado CNPhotosWorker.
  
-![](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosWorker.PNG | width=100)
+![ScreenShot](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosWorker.png)
 
 ### __Módulo monitor:__
 O módulo monitor gere o número de instâncias de workers em relação às métricas que recebe, podendo também fornecer informação adicional acerca do estado global do sistema ao gestor do monitor do módulo cliente se for pedido. O projeto Java referente a este módulo é denominado por CNPhotosMonitor.
  
-![](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosMonitor.PNG | width=100)
+![ScreenShot](https://github.com/marcomartins1998/CNPhotos/blob/master/pics/CNPhotosMonitor.png)
 
 ## COMPONENTES
 ### __Adição de imagens:__
