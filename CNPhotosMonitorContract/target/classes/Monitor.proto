@@ -1,0 +1,35 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "monitorstubs";
+import "google/protobuf/empty.proto";
+
+package monitorservice; // package do proto
+
+// The greeting service definition.
+service MonitorService {
+    rpc getInstanceNum(google.protobuf.Empty) returns (InstanceNumber);
+    rpc getGlobalStatus(google.protobuf.Empty) returns (GlobalStatus);
+    rpc setCpuLimit(MetricLimit) returns (google.protobuf.Empty);
+    rpc setMemLimit(MetricLimit) returns (google.protobuf.Empty);
+    rpc setImgPerSecLimit(MetricLimit) returns (google.protobuf.Empty);
+    rpc setActionPeriod(ActionPeriod) returns (google.protobuf.Empty);
+}
+
+message MetricLimit {
+    double lowLimit = 1;
+    double highLimit = 2;
+}
+
+message GlobalStatus {
+    double cpuUsage = 1;
+    double memUsage = 2;
+    double imgPerSec = 3;
+}
+
+message InstanceNumber {
+    int32 size = 1;
+}
+
+message ActionPeriod {
+    int64 val = 1;
+}
